@@ -19,6 +19,7 @@ class App:
         self.rightGroup_id = dpg.generate_uuid()
 
         self.leftChild_id = dpg.generate_uuid()
+        self.middleChild_id = dpg.generate_uuid()
         self.rightChild_id = dpg.generate_uuid()
 
     def CreatePlayerButton(self, sender, app_data, user_data):
@@ -39,14 +40,14 @@ class App:
 
     def AddPlayer1(self):
         name_id = 0
-        with dpg.window(width=400):
+        with dpg.window(width=400, label="Add Player to Team 1"):
             name_id = dpg.add_input_text(label="Enter Player's Name", width=200)
             dpg.add_button(label="Add Player", width=200, callback=self.CreatePlayerButton,
                            user_data=[name_id, self.leftGroup_id, 1])
 
     def AddPlayer2(self):
         name_id = 0
-        with dpg.window(width=300):
+        with dpg.window(width=400, label="Add Player to Team 2"):
             name_id = dpg.add_input_text(label="Enter Player's Name", width=200)
             dpg.add_button(label="Add Player", width=200, callback=self.CreatePlayerButton,
                            user_data=[name_id, self.rightGroup_id, 2])
@@ -64,13 +65,17 @@ class App:
                 dpg.add_menu_item(label="Box Score")
 
             dpg.add_spacing(count=20)
-            with dpg.group(horizontal=True, horizontal_spacing=750) as group:
+            with dpg.group(horizontal=True, horizontal_spacing=75) as group:
 
                 with dpg.child(width=250, height=600, id=self.leftChild_id):
                     with dpg.group(id=self.leftGroup_id):
                         dpg.add_text(default_value="Team 1")
                         dpg.add_same_line(spacing=15)
                         dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer1)
+
+                with dpg.child(width=600, height=600, id=self.middleChild_id):
+                    with dpg.group(id=self.middleGroup_id):
+                        dpg.add_text(default_value="Scoreboard")
 
                 with dpg.child(width=250, height=600, id=self.rightChild_id):
                     with dpg.group(id=self.rightGroup_id):
