@@ -4,6 +4,7 @@ Player Class that will hold the players stats and percentages
 
 '''
 
+import dearpygui.dearpygui as dpg
 
 class PlayerClass:
 
@@ -111,9 +112,12 @@ class PlayerClass:
         return self.three_attempts
 
     def GetStatLine(self):
-        stat_line = f"Points: {self.points} - Assists: {self.assists} - Rebounds: {self.rebounds} - Field Goals: " \
-                    f"{self.fg_made}/{self.fg_attempts} - 3 Field Goals: {self.three_made}/{self.three_attempts}" \
-                    f" - Free Throws {self.ft_made}/{self.ft_attempts}"
+        field_goal = f"{self.GetFG()}/{self.GetAttemptFG()}"
+        free_throw = f"{self.GetFT()}/{self.GetAttemptFT()}"
+        three_point = f"{self.GetThree()}/{self.GetAttemptThree()}"
+        stat_line = [self.GetName(), self.GetPoints(), self.GetAssists(), self.GetRebounds(), field_goal, three_point,
+                     free_throw]
+
         return stat_line
 
     def ResetStats(self):
@@ -126,3 +130,29 @@ class PlayerClass:
         self.ft_attempts = 0
         self.three_made = 0
         self.three_attempts = 0
+
+    def GenerateWindow(self):
+        with dpg.window(label=self.name, width=400, height=200):
+            dpg.add_spacing()
+            with dpg.group(horizontal=True, horizontal_spacing=5):
+                dpg.add_button(label="Made FG", width=125, callback=self.MadeFG)
+                dpg.add_button(label="Miss FG", width=125, callback=self.MissFG)
+                dpg.add_button(label="Delete FG", width=125, callback=self.DeleteFG)
+            dpg.add_spacing()
+            with dpg.group(horizontal=True, horizontal_spacing=5):
+                dpg.add_button(label="Made 3-FG", width=125, callback=self.MadeThree)
+                dpg.add_button(label="Miss 3-FG", width=125, callback=self.MissThree)
+                dpg.add_button(label="Delete 3-FG", width=125, callback=self.DeleteThree)
+            dpg.add_spacing()
+            with dpg.group(horizontal=True, horizontal_spacing=5):
+                dpg.add_button(label="Made FT", width=125, callback=self.MadeFT)
+                dpg.add_button(label="Miss FT", width=125, callback=self.MissFT)
+                dpg.add_button(label="Delete FT", width=125, callback=self.DeleteFT)
+            dpg.add_spacing()
+            with dpg.group(horizontal=True, horizontal_spacing=5):
+                dpg.add_button(label="Made Assist", width=125, callback=self.MadeAssist)
+                dpg.add_button(label="Delete Assist", width=125, callback=self.DeleteAssist)
+            dpg.add_spacing()
+            with dpg.group(horizontal=True, horizontal_spacing=5):
+                dpg.add_button(label="Made Rebound", width=125, callback=self.MadeRebound)
+                dpg.add_button(label="Delete Rebound", width=125, callback=self.DeleteRebound)
