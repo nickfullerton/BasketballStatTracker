@@ -115,7 +115,12 @@ class PlayerClass:
         field_goal = f"{self.GetFG()}/{self.GetAttemptFG()}"
         free_throw = f"{self.GetFT()}/{self.GetAttemptFT()}"
         three_point = f"{self.GetThree()}/{self.GetAttemptThree()}"
-        stat_line = [self.GetName(), self.GetPoints(), self.GetAssists(), self.GetRebounds(), field_goal, three_point,
+        name = self.GetName().split(" ", 1)
+        if len(name) > 1:
+            real_name = name[0] + "\n" + name[1]
+        else:
+            real_name = name[0]
+        stat_line = [real_name, self.GetPoints(), self.GetAssists(), self.GetRebounds(), field_goal, three_point,
                      free_throw]
 
         return stat_line
