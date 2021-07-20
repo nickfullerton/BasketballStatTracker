@@ -28,6 +28,10 @@ class App:
         self.child_parent_1 = dpg.generate_uuid()
         self.child_parent_2 = dpg.generate_uuid()
 
+        self.score_group = dpg.generate_uuid()
+        self.score_1 = dpg.generate_uuid()
+        self.score_2 = dpg.generate_uuid()
+
     def CreatePlayerButton(self, sender, app_data, user_data):
         name = dpg.get_value(user_data[0])
         parent = user_data[1]
@@ -62,6 +66,7 @@ class App:
 
         if dpg.does_item_exist(item=self.table_team1):
             dpg.delete_item(item=self.table_team1)
+
         with dpg.table(id=self.table_team1, parent=parent):
             dpg.add_table_column(label="Name")
             dpg.add_table_column(label="Points")
@@ -82,6 +87,7 @@ class App:
 
         if dpg.does_item_exist(item=self.table_team2):
             dpg.delete_item(item=self.table_team2)
+
         with dpg.table(id=self.table_team2, parent=parent):
             dpg.add_table_column(label="Name")
             dpg.add_table_column(label="Points")
@@ -98,6 +104,23 @@ class App:
                     if not (i == 4 and j == 6):
                         dpg.add_table_next_column()
 
+    def GetScore1(self, parent):
+        if dpg.does_item_exist(item=self.score_1):
+            dpg.delete_item(item=self.score_1)
+
+        points = 0
+        for player in self.team1:
+            points += player.GetPoints()
+        dpg.add_text("Team 1 Score: " + str(points), parent=parent, id=self.score_1)
+
+    def GetScore2(self, parent):
+        if dpg.does_item_exist(item=self.score_2):
+            dpg.delete_item(item=self.score_2)
+        points = 0
+        for player in self.team2:
+            points += player.GetPoints()
+        dpg.add_text("Team 2 Score: " + str(points), parent=parent, id=self.score_2)
+
     def start(self):
 
         dpg.setup_registries()
@@ -108,9 +131,12 @@ class App:
 
             with dpg.menu_bar():
                 dpg.add_menu_item(label="Start Game")
-                dpg.add_menu_item(label="Box Score")
 
-            dpg.add_spacing(count=20)
+            dpg.add_spacing(count=5)
+            with dpg.group(id=self.score_group):
+                self.GetScore1(self.score_group)
+                self.GetScore2(self.score_group)
+            dpg.add_spacing(count=5)
             with dpg.group(horizontal=True, horizontal_spacing=75) as group:
 
                 with dpg.child(width=250, height=600, id=self.leftChild_id):
@@ -140,6 +166,8 @@ class App:
         dpg.set_primary_window(main_window, True)
         while dpg.is_dearpygui_running():
             # you can manually stop by using stop_dearpygui()
+            self.GetScore1(self.score_group)
+            self.GetScore2(self.score_group)
             self.ShowTable1(self.child_parent_1)
             self.ShowTable2(self.child_parent_2)
             dpg.render_dearpygui_frame()
