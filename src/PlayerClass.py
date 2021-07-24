@@ -12,6 +12,9 @@ class PlayerClass:
         # Initialize class variables that will be unique to each player
         self.name = name
         self.ResetStats()
+        self.player_button = dpg.generate_uuid()
+        self.player_window = dpg.generate_uuid()
+        self.deleted_player = False
 
     def GetName(self):
         return self.name
@@ -136,8 +139,13 @@ class PlayerClass:
         self.three_made = 0
         self.three_attempts = 0
 
+    def GenerateButton(self, parent):
+        dpg.add_spacing(count=3, parent=parent)
+        dpg.add_button(label=self.name, parent=parent, width=200, callback=self.GenerateWindow, id=self.player_button)
+
     def GenerateWindow(self):
-        with dpg.window(label=self.name, width=400, height=200):
+
+        with dpg.window(label=self.name, width=400, height=200,id=self.player_window):
             dpg.add_spacing()
             with dpg.group(horizontal=True, horizontal_spacing=5):
                 dpg.add_button(label="Made FG", width=125, callback=self.MadeFG)
@@ -161,3 +169,15 @@ class PlayerClass:
             with dpg.group(horizontal=True, horizontal_spacing=5):
                 dpg.add_button(label="Made Rebound", width=125, callback=self.MadeRebound)
                 dpg.add_button(label="Delete Rebound", width=125, callback=self.DeleteRebound)
+            dpg.add_spacing()
+            with dpg.group(horizontal=True, horizontal_spacing=5):
+                dpg.add_button(label="Delete Player", width=125, callback=self.DeletePlayer)
+
+    def DeletePlayer(self):
+        self.ResetStats()
+        dpg.delete_item(item=self.player_button)
+        dpg.delete_item(item=self.player_window)
+        self.deleted_player = True
+
+    def IsDeleted(self):
+        return self.deleted_player

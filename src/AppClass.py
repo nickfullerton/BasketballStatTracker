@@ -40,13 +40,11 @@ class App:
 
         if team == 1 and len(self.team1) < 15:
             self.team1.append(new_player)
-            dpg.add_spacing(count=3, parent=parent)
-            dpg.add_button(label=name, parent=parent, width=200, callback=new_player.GenerateWindow)
+            new_player.GenerateButton(parent)
 
         elif team == 2 and len(self.team2) < 15:
             self.team2.append(new_player)
-            dpg.add_spacing(count=3, parent=parent)
-            dpg.add_button(label=name, parent=parent, width=200, callback=new_player.GenerateWindow)
+            new_player.GenerateButton(parent)
 
     def AddPlayer1(self):
         name_id = 0
@@ -77,6 +75,7 @@ class App:
             dpg.add_table_column(label="FT")
 
             for i in range(0, len(self.team1)):
+
                 stats = self.team1[i].GetStatLine()
                 for j in range(0, 7):
                     dpg.add_text(str(stats[j]))
@@ -110,7 +109,10 @@ class App:
 
         points = 0
         for player in self.team1:
-            points += player.GetPoints()
+            if player.IsDeleted():
+                self.team1.remove(player)
+            else:
+                points += player.GetPoints()
         dpg.add_text("Team 1 Score: " + str(points), parent=parent, id=self.score_1)
 
     def GetScore2(self, parent):
@@ -118,7 +120,10 @@ class App:
             dpg.delete_item(item=self.score_2)
         points = 0
         for player in self.team2:
-            points += player.GetPoints()
+            if player.IsDeleted():
+                self.team2.remove(player)
+            else:
+                points += player.GetPoints()
         dpg.add_text("Team 2 Score: " + str(points), parent=parent, id=self.score_2)
 
     def start(self):
@@ -155,7 +160,6 @@ class App:
                         dpg.add_text("Team 2 Box Score")
                         with dpg.child(width=585, height=255, id=self.child_parent_2):
                             self.ShowTable2(self.child_parent_2)
-
 
                 with dpg.child(width=250, height=600, id=self.rightChild_id):
                     with dpg.group(id=self.rightGroup_id):
