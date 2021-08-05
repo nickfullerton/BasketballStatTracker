@@ -79,7 +79,7 @@ class App:
                 stats = self.team1[i].GetStatLine()
                 for j in range(0, 7):
                     dpg.add_text(str(stats[j]))
-                    if not (i == 4 and j == 6):
+                    if not (i == len(self.team1) - 1 and j == 6):
                         dpg.add_table_next_column()
 
     def ShowTable2(self, parent):
@@ -100,7 +100,7 @@ class App:
                 stats = self.team2[i].GetStatLine()
                 for j in range(0, 7):
                     dpg.add_text(str(stats[j]))
-                    if not (i == 4 and j == 6):
+                    if not (i == len(self.team2) - 1 and j == 6):
                         dpg.add_table_next_column()
 
     def GetScore1(self, parent):
