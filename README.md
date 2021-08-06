@@ -35,12 +35,12 @@ Full example of the app using 2021 NBA Finals, Game 6 Box Score
 
 # Future
 
-I will pick this up sometime in the future to add small features.  
+I will pick this up sometime in the future and want to make it an actual desktop app.  
 
-1. Save function to save completed games or in progress game, if completed game, then being able to save the players stats   
-2. Make it a desktop application   
+1. A main menu, being able to start/continue a game, create a team instead of creating it inside the game, being able to view a already created team stats  
+2. Save function to save completed games or in progress game, if completed game, then being able to save the players stats  
 3. Change up the GUI, add new colors, fonts, etc.  
-4. A main menu, being able to start/continue a game, create a team instead of creating it inside the game, being able to view a already created team stats
+4. Final Phase, to make it a desktop app for windows
 
 
 
