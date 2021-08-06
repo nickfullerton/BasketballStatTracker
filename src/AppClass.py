@@ -126,55 +126,35 @@ class App:
                 points += player.GetPoints()
         dpg.add_text("Team 2 Score: " + str(points), parent=parent, id=self.score_2)
 
-    def start(self):
+    def show(self):
 
-        dpg.setup_registries()
-        dpg.setup_viewport()
-        dpg.set_viewport_title("Basketball Stat Tracker")
-
-        with dpg.window() as main_window:
-
-            with dpg.menu_bar():
-                dpg.add_menu_item(label="Start Game")
-
-            dpg.add_spacing(count=5)
-            with dpg.group(id=self.score_group):
-                self.GetScore1(self.score_group)
-                self.GetScore2(self.score_group)
-            dpg.add_spacing(count=5)
-            with dpg.group(horizontal=True, horizontal_spacing=75) as group:
-
-                with dpg.child(width=250, height=600, id=self.leftChild_id):
-                    with dpg.group(id=self.leftGroup_id):
-                        dpg.add_text(default_value="Team 1")
-                        dpg.add_same_line(spacing=15)
-                        dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer1)
-
-                with dpg.child(width=600, height=600, id=self.middleChild_id):
-                    with dpg.group(id=self.middleGroup_id):
-                        dpg.add_text("Team 1 Box Score")
-                        with dpg.child(width=585, height=255, id=self.child_parent_1):
-                            self.ShowTable1(self.child_parent_1)
-
-                        dpg.add_spacing(count=5)
-                        dpg.add_text("Team 2 Box Score")
-                        with dpg.child(width=585, height=255, id=self.child_parent_2):
-                            self.ShowTable2(self.child_parent_2)
-
-                with dpg.child(width=250, height=600, id=self.rightChild_id):
-                    with dpg.group(id=self.rightGroup_id):
-                        dpg.add_text(default_value="Team 2")
-                        dpg.add_same_line(spacing=15)
-                        dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer2)
-
-        dpg.set_primary_window(main_window, True)
-        while dpg.is_dearpygui_running():
-            # you can manually stop by using stop_dearpygui()
+        dpg.add_spacing(count=5)
+        with dpg.group(id=self.score_group):
             self.GetScore1(self.score_group)
             self.GetScore2(self.score_group)
-            self.ShowTable1(self.child_parent_1)
-            self.ShowTable2(self.child_parent_2)
-            dpg.render_dearpygui_frame()
+        dpg.add_spacing(count=5)
+        with dpg.group(horizontal=True, horizontal_spacing=75) as group:
 
-        dpg.cleanup_dearpygui()
-        #dpg.start_dearpygui()
+            with dpg.child(width=250, height=600, id=self.leftChild_id):
+                with dpg.group(id=self.leftGroup_id):
+                    dpg.add_text(default_value="Team 1")
+                    dpg.add_same_line(spacing=15)
+                    dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer1)
+
+            with dpg.child(width=600, height=600, id=self.middleChild_id):
+                with dpg.group(id=self.middleGroup_id):
+                    dpg.add_text("Team 1 Box Score")
+                    with dpg.child(width=585, height=255, id=self.child_parent_1):
+                        self.ShowTable1(self.child_parent_1)
+
+                    dpg.add_spacing(count=5)
+                    dpg.add_text("Team 2 Box Score")
+                    with dpg.child(width=585, height=255, id=self.child_parent_2):
+                        self.ShowTable2(self.child_parent_2)
+
+            with dpg.child(width=250, height=600, id=self.rightChild_id):
+                with dpg.group(id=self.rightGroup_id):
+                    dpg.add_text(default_value="Team 2")
+                    dpg.add_same_line(spacing=15)
+                    dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer2)
+

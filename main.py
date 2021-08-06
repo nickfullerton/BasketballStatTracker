@@ -1,4 +1,5 @@
-from src.AppClass import *
+from src.MainMenu import *
 
-app = App()
-app.start()
+main_menu = MainMenu()
+main_menu.run()
+
