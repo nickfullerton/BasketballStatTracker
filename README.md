@@ -3,8 +3,14 @@
 Clean, easy-to-use design that allows you to track your teams stats using Dear Py GUI.  
 It includes 2-pointers, 3-pointers, free throws, assists, and rebounds.
 
+# Main Menu
 
-# Basic GUI
+Clean Main Menu, with a start game, view saved game, and view teams options
+
+![Main Menu](https://user-images.githubusercontent.com/72878403/128581688-251db4f1-1485-4071-94a9-c80299a248d8.PNG)
+
+
+# Basic Game GUI
 
 Super clean GUI, easy-to-use design, might change it in the future
 
