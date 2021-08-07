@@ -175,8 +175,10 @@ class PlayerClass:
 
     def DeletePlayer(self):
         self.ResetStats()
-        dpg.delete_item(item=self.player_button)
-        dpg.delete_item(item=self.player_window)
+        if dpg.does_item_exist(item=self.player_button):
+            dpg.delete_item(item=self.player_button)
+        if dpg.does_item_exist(item=self.player_window):
+            dpg.delete_item(item=self.player_window)
         self.deleted_player = True
 
     def IsDeleted(self):

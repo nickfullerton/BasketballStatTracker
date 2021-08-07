@@ -20,6 +20,7 @@ class MainMenu:
         self.isGameOpened = False
 
     def ShowGameWindow(self):
+        self.AppMenu.ResetApp()
         dpg.set_viewport_title("Basketball Stat Tracker")
         dpg.set_primary_window(self.gameWindow, True)
         dpg.configure_item(item=self.gameWindow, show=True)

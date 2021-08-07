@@ -126,6 +126,15 @@ class App:
                 points += player.GetPoints()
         dpg.add_text("Team 2 Score: " + str(points), parent=parent, id=self.score_2)
 
+    def ResetApp(self):
+        for player in self.team1:
+            player.DeletePlayer()
+        for player in self.team2:
+            player.DeletePlayer()
+
+        dpg.delete_item(item=self.leftGroup_id, children_only=True)
+        dpg.delete_item(item=self.rightGroup_id, children_only=True)
+
     def show(self):
 
         dpg.add_spacing(count=5)
@@ -136,10 +145,11 @@ class App:
         with dpg.group(horizontal=True, horizontal_spacing=75) as group:
 
             with dpg.child(width=250, height=600, id=self.leftChild_id):
+                dpg.add_text(default_value="Team 1")
+                dpg.add_same_line(spacing=15)
+                dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer1)
                 with dpg.group(id=self.leftGroup_id):
-                    dpg.add_text(default_value="Team 1")
-                    dpg.add_same_line(spacing=15)
-                    dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer1)
+                    pass
 
             with dpg.child(width=600, height=600, id=self.middleChild_id):
                 with dpg.group(id=self.middleGroup_id):
@@ -153,8 +163,9 @@ class App:
                         self.ShowTable2(self.child_parent_2)
 
             with dpg.child(width=250, height=600, id=self.rightChild_id):
+                dpg.add_text(default_value="Team 2")
+                dpg.add_same_line(spacing=15)
+                dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer2)
                 with dpg.group(id=self.rightGroup_id):
-                    dpg.add_text(default_value="Team 2")
-                    dpg.add_same_line(spacing=15)
-                    dpg.add_button(label="+", width=20, height=20, callback=self.AddPlayer2)
+                    pass
 
