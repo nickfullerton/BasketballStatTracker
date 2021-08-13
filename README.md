@@ -5,9 +5,10 @@ It includes 2-pointers, 3-pointers, free throws, assists, and rebounds.
 
 # Main Menu
 
-Clean Main Menu, with a start game, view saved game, and view teams options
+Clean Main Menu, with a start game button
 
-![Main Menu](https://user-images.githubusercontent.com/72878403/128581688-251db4f1-1485-4071-94a9-c80299a248d8.PNG)
+![Main Menu New](https://user-images.githubusercontent.com/72878403/129426819-a65d9646-5c63-40ae-b4de-410d38e6baff.PNG)
+
 
 
 # Basic Game GUI
