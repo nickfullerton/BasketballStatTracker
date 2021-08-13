@@ -72,10 +72,6 @@ class MainMenu:
                 dpg.set_item_font(item=dpg.last_item(), font=title_font)
                 dpg.add_spacing(count=10)
                 dpg.add_button(label="Start Game", callback=self.ShowGameWindow, width=200, indent=150)
-                dpg.add_spacing(count=5)
-                dpg.add_button(label="View Saved Games", callback=self.ShowSaveWindow, width=200, indent=150)
-                dpg.add_spacing(count=5)
-                dpg.add_button(label="View Teams", callback=self.ShowTeamWindow, width=200, indent=150)
 
         with dpg.window(label="View Teams", id=self.teamWindow, show=False):
 
