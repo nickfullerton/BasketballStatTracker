@@ -4,17 +4,21 @@ Clean, easy-to-use design that allows you to track your basketball team's stats 
 It includes 2-pointers, 3-pointers, free throws, assists, and rebounds.
 
 
+
 ## Description  
+
 
 ### Built With  
 
 * [DearPyGui](https://github.com/hoffstadt/DearPyGui)
+
 
 ### Main Menu
 
 Clean Main Menu, with a start game button
 
 ![Main Menu New](https://user-images.githubusercontent.com/72878403/129426819-a65d9646-5c63-40ae-b4de-410d38e6baff.PNG)
+
 
 ### Basic Game GUI
 
@@ -45,6 +49,7 @@ Full example of the app using 2021 NBA Finals, Game 6 Box Score
 ![Full View](https://user-images.githubusercontent.com/72878403/128538846-c1570947-e300-44d2-b239-1e5dceca98df.PNG)
 
 
+
 ## Getting Started
 
 1. Clone the repo
@@ -53,6 +58,13 @@ Full example of the app using 2021 NBA Finals, Game 6 Box Score
    ```
 2. Just run `main.py`
    
+   
+   
+## License
+
+Distributed under the MIT License. See `LICENSE.md` for more information.
+
+
 
 ## Contact
 
