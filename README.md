@@ -47,18 +47,7 @@ You can add/delete 2-pointers, 3-pointers, free throws, assists, and rebounds.
 Full example of the app using 2021 NBA Finals, Game 6 Box Score
 
 ![Full View](https://user-images.githubusercontent.com/72878403/128538846-c1570947-e300-44d2-b239-1e5dceca98df.PNG)
-
-
-
-## Getting Started
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/nickfullerton/BasketballStatTracker.git
-   ```
-2. Just run `main.py`
-   
-   
+  
    
 ## License
 
